@@ -61,16 +61,15 @@ function formatDate(date) {
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
   
-  function convertToFahrenheit(event) {
-    event.preventDefault();
-    let temperatureElement = document.querySelector("#temperature");
-    temperatureElement.innerHTML = 66;
-  }
-  
-  function convertToCelsius(event) {
-    event.preventDefault();
-    let temperatureElement = document.querySelector("#temperature");
-    temperatureElement.innerHTML = 19;
+  function convert(degree) {
+    var x;
+    if (degree == "C") {
+      x = document.getElementById("c").value * 9 / 5 + 32;
+      document.getElementById("f").value = Math.round(x);
+    } else {
+      x = (document.getElementById("f").value -32) * 5 / 9;
+      document.getElementById("c").value = Math.round(x);
+    }
   }
   
   let dateElement = document.querySelector("#date");
@@ -83,5 +82,5 @@ function formatDate(date) {
   let currentLocationButton = document.querySelector("#current-location-button");
   currentLocationButton.addEventListener("click", getCurrentLocation);
   
-  searchCity("New York");
-  
+  document.location.reload();
+  searchCity("");
