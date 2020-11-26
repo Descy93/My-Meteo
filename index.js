@@ -1,3 +1,5 @@
+//date format
+
 function formatDate(date) {
     let hours = date.getHours();
     if (hours < 10) {
@@ -22,7 +24,13 @@ function formatDate(date) {
   
     return `${day} ${hours}:${minutes}`;
   }
+  let dateElement = document.querySelector("#date");
+  let currentTime = new Date();
+  dateElement.innerHTML = formatDate(currentTime);
   
+ 
+    //Weather API
+
   function displayWeatherCondition(response) {
     document.querySelector("#city").innerHTML = response.data.name;
     document.querySelector("#temperature").innerHTML = Math.round(
@@ -39,6 +47,7 @@ function formatDate(date) {
   
   function searchCity(city) {
     let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayWeatherCondition);
   }
@@ -50,42 +59,46 @@ function formatDate(date) {
   }
   
   function searchLocation(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let units = "metric";
     let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-  
+  console.log(apiUrl);
     axios.get(apiUrl).then(displayWeatherCondition);
   }
+  
+  let form = document.querySelector("#search-form");
+  form.addEventListener("submit", handleSubmit);
+  
+  let currentLocationButton = document.querySelector("#current-location-button");
+  currentLocationButton.addEventListener("click", getCurrentLocation);
+  
+    searchCity("Saintes");
   
   function getCurrentLocation(event) {
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
   
+  //Metrics option
+
   function convertToFahrenheit(event) {
     event.preventDefault();
-    let temperatureElement = document.querySelector("#temperature");
     temperatureElement.innerHTML = 66; 
   }
-  let fahrenheitLink= document.querySelector("#fahrenheit-link");
-  fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
-  
   function convertToCelsius(event) {
     event.preventDefault();
-    let temperatureElement = document.querySelector("#temperature");
     temperatureElement.innerHTML = 19;
   }
+
   let celsiusLink= document.querySelector("#celsius-link");
+  let fahrenheitLink= document.querySelector("#fahrenheit-link");
+  let temperatureElement = document.querySelector("#temperature");
+  
+
   celsiusLink.addEventListener("click", convertToCelsius);
+  fahrenheitLink.addEventListener("click", convertToFahrenheit);
   
-  let dateElement = document.querySelector("#date");
-  let currentTime = new Date();
-  dateElement.innerHTML = formatDate(currentTime);
-  
-  let searchForm = document.querySelector("#search-form");
-  searchForm.addEventListener("submit", handleSubmit);
-  
-  currentLocationButton = document.querySelector("#current-location-button");
-  currentLocationButton.addEventListener("click", getCurrentLocation);
-  
-    searchCity("Saintes");
+ 
