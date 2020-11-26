@@ -33,7 +33,7 @@ function formatDate(date) {
 
   function displayWeatherCondition(response) {
     document.querySelector("#city").innerHTML = response.data.name;
-    document.querySelector("#current-temperature").innerHTML = Math.round(
+    document.querySelector("#temperature").innerHTML = Math.round(
       response.data.main.temp
     );
   
