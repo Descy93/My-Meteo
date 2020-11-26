@@ -33,7 +33,7 @@ function formatDate(date) {
 
   function displayWeatherCondition(response) {
     document.querySelector("#city").innerHTML = response.data.name;
-    document.querySelector("#temperature").innerHTML = Math.round(
+    document.querySelector("#current-temperature").innerHTML = Math.round(
       response.data.main.temp
     );
   
@@ -85,17 +85,17 @@ function formatDate(date) {
 
   function convertToFahrenheit(event) {
     event.preventDefault();
-    temperatureElement.innerHTML = 66; 
+    elementTemp.innerHTML = 66; 
   }
 
   function convertToCelsius(event) {
     event.preventDefault();
-    temperatureElement.innerHTML = 19;
+    elementTemp.innerHTML = 19;
   }
 
   let celsiusLink= document.querySelector("#celsius-link");
   let fahrenheitLink= document.querySelector("#fahrenheit-link");
-  let temperatureElement = document.querySelector("#temperature");
+  let elementTemp = document.querySelector("#current-temperature");
   
 
   celsiusLink.addEventListener("click", convertToCelsius);
