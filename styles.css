@@ -53,6 +53,9 @@ body {
     border-color: #07adeb;
     margin-left: 25px;
   }
+  .city{
+    font-size: 20px;
+  }
   
   .precipitation {
     font-family: "Dancing Script", cursive;
