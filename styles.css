@@ -7,11 +7,11 @@ body {
     font-size: 35px;
     font-family: "Dancing Script", cursive;
     color: #069be5;
-    padding: 10px;
+    padding: 0;
     margin-left: -30px;
   }
   p {
-    font-size: 20px;
+    font-size: 25px;
     font-family: "Dancing Script", cursive;
     color: #069be5;
     margin-left: -20px;
@@ -59,6 +59,6 @@ body {
     font-family: "Dancing Script", cursive;
     color: #131210;
     font-size: 16px;
-    margin-left: 45px;
+    margin-left: 50px;
   }
   
