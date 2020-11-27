@@ -1,35 +1,42 @@
 //date format
-
 function formatDate(date) {
-    let hours = date.getHours();
-    if (hours < 10) {
-      hours = `0${hours}`;
-    }
-    let minutes = date.getMinutes();
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-  
-    let dayIndex = date.getDay();
-    let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-    let day = days[dayIndex];
-  
-    return `${day} ${hours}:${minutes}`;
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
-  let dateElement = document.querySelector("#date");
-  let currentTime = new Date();
-  dateElement.innerHTML = formatDate(currentTime);
-  
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let dayIndex = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let day = days[dayIndex];
+
+  return `${day} ${hours}:${minutes}`;
+}
+let dateElement = document.querySelector("#date");
+let currentTime = new Date();
+dateElement.innerHTML = formatDate(currentTime);
+
+
+  //Global parameters
+
+    let globalUnits = "metric";
+    let globalCityTempC= 12;
+    let globalCityTempF= calculFahrenheit(globalCityTempC);
  
     //geolocalisation API
+    
+    
 
   function displayWeatherCondition(response) {
     document.querySelector("#city").innerHTML = response.data.name;
@@ -121,6 +128,3 @@ function changeUnits() {
 
   celsiusLink.addEventListener("click", convertToCelsius);
   fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-    
-    
