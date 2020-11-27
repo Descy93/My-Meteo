@@ -4,24 +4,24 @@ body {
   }
   
   h1 {
-    font-size: 35px;
+    font-size: 33px;
     font-family: "Dancing Script", cursive;
     color: #069be5;
     padding: 0;
-    margin-left: -30px;
+    margin-left: 0;
   }
   p {
     font-size: 25px;
     font-family: "Dancing Script", cursive;
     color: #069be5;
-    margin-left: -20px;
+    margin-left: 0;
   }
   hr {
     border-top: 3px double;
   }
   
   ul {
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     list-style: none;
     color: black;
@@ -29,10 +29,11 @@ body {
     position: relative;
     padding-left: 30px;
     padding: 10px;
+    margin-top: 5px;
   }
   
   .temperature {
-    margin-left: -20px;
+    margin-left: 0;
     font-size: 50px;
     color: #07adeb;
   }
@@ -54,11 +55,24 @@ body {
     border-color: #07adeb;
     margin-left: 25px;
   }
+  .day{
+    color: #07adeb;
+    font-style: italic;
+    font-variant: small-caps;
+    font-size: 20px;
+  }
   
   .precipitation {
     font-family: "Dancing Script", cursive;
     color: #131210;
     font-size: 16px;
-    margin-left: 60px;
+    margin-left: 0;
+  }
+
+  .signature{
+    font-size: 12px;
+    margin-left: 10px;
+    color: #131210;
+    font-style: oblique;
   }
   

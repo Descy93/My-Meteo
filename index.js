@@ -29,7 +29,7 @@ function formatDate(date) {
   dateElement.innerHTML = formatDate(currentTime);
   
  
-    //Weather API
+    //geolocalisation API
 
   function displayWeatherCondition(response) {
     document.querySelector("#city").innerHTML = response.data.name;
@@ -81,24 +81,46 @@ function formatDate(date) {
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
   
-  //Metrics option
+  //Temperature metrics 
+
 
   function convertToFahrenheit(event) {
     event.preventDefault();
-    elementTemp.innerHTML = 66; 
   }
 
   function convertToCelsius(event) {
     event.preventDefault();
-    elementTemp.innerHTML = 19;
+  
   }
+  function calculFahrenheit (centigrades) {
+  return Number(centigrades)* (9/5) + 32;
+}
+
+function calculCentigrades(fahrenheit) {
+  return (Number(fahrenheit) - 32) * (5/9);
+}
+
+function changeUnits() {
+  determineTempUnits();
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLon}&appid=${apiKey}&units=${globalUnits}`;
+  axios.get(url).then(displayTempAndWeatherToUserFromResponse);
+
+  if (units === "metric") {
+    tempDisplay.innerHTML = `${Math.round(cityTempC)} °C`;
+    windDisplay.innerHTML = `Wind ${Math.round(windSpeedms)} m/s`;
+  } else if (globalUnits === "imperial") {
+    tempDisplay.innerHTML = `${Math.round(cityTempF)} °F`;
+   
+  }
+
+  } 
 
   let celsiusLink= document.querySelector("#celsius-link");
   let fahrenheitLink= document.querySelector("#fahrenheit-link");
   let elementTemp = document.querySelector("#current-temperature");
-  
 
   celsiusLink.addEventListener("click", convertToCelsius);
   fahrenheitLink.addEventListener("click", convertToFahrenheit);
-  
- 
+
+    
+    
